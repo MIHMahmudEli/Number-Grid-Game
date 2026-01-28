@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Grid | The Magic 15 Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description"
+        content="A mathematical twist on Tic-Tac-Toe. Collect three numbers that sum to 15 in a straight line to win!">
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="background-mesh"></div>
+
+        <header class="duel-header">
+            <div class="objective-banner">
+                <span class="goal-label">GOAL</span>
+                <span class="goal-value">MATCH 15</span>
+            </div>
+            <h1>SUM <span class="accent">DUEL</span></h1>
+        </header>
+
+        <main id="game-container">
+            <div class="duel-arena triptych">
+                <!-- Computer's Side (Left) -->
+                <aside class="combatant-side cpu-side">
+                    <div class="side-header">
+                        <span class="rank">OPPONENT</span>
+                        <h2>COMPUTER</h2>
+                    </div>
+                    <div id="cpu-collection" class="collection-shelf"></div>
+                </aside>
+
+                <!-- Center: Number Pool Area -->
+                <section class="number-pool-section">
+                    <div id="sum-scanner" class="sum-scanner">
+                        <span class="scanner-text">Ready to deploy...</span>
+                    </div>
+
+                    <div id="turn-indicator" class="turn-indicator">
+                        <span class="indicator-text">SYSTEM STANDBY</span>
+                    </div>
+
+                    <div class="pool-header">AVAILABLE NUMBERS</div>
+                    <div id="number-pool" class="pool-shelf">
+                        <!-- Numbers 1-9 -->
+                    </div>
+                </section>
+
+                <!-- User Side (Right) -->
+                <aside class="combatant-side user-side">
+                    <div class="side-header">
+                        <span class="rank">CHALLENGER</span>
+                        <h2>YOU</h2>
+                    </div>
+                    <div id="user-collection" class="collection-shelf"></div>
+                </aside>
+            </div>
+
+            <div class="controls-area">
+                <button id="reset-btn" class="dock-btn reset" title="Restart Game">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                        <path d="M21 3v5h-5"></path>
+                        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                        <path d="M3 21v-5h5"></path>
+                    </svg>
+                    <span class="btn-text">RESTART</span>
+                </button>
+                <button id="rules-btn" class="dock-btn info" title="How to Play">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <span class="btn-text">HOW TO PLAY</span>
+                </button>
+            </div>
+        </main>
+
+        <!-- Setup Overlay: Who starts? -->
+        <div id="setup-overlay" class="overlay">
+            <div class="setup-content">
+                <span class="setup-tag">INITIALIZATION</span>
+                <h2>WHO STARTS FIRST?</h2>
+                <div class="setup-btns">
+                    <button id="start-user" class="setup-btn user">I WILL START</button>
+                    <button id="start-cpu" class="setup-btn cpu">COMPUTER STARTS</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="rules-modal" class="overlay hidden">
+            <div class="overlay-content" style="max-width: 550px;">
+                <h2 style="color: var(--accent-amber); margin-bottom: 1.5rem;">TACTICAL MANUAL</h2>
+                <ul class="rules-list">
+                    <li>Reach exactly <b>15</b> to win.</li>
+                    <li>You must use <b>at least 3 numbers</b>.</li>
+                    <li>The computer plays perfectly—don't make mistakes.</li>
+                    <li>The number pool is scrambled every game.</li>
+                    <li>First player to 15 wins; otherwise, it's a draw.</li>
+                </ul>
+
+                <button id="close-rules" class="dock-btn info"
+                    style="width: 100%; margin-top: 1.5rem; border-color: var(--accent-amber); color: var(--accent-amber);">Ready?</button>
+            </div>
+        </div>
+
+        <div id="win-overlay" class="overlay hidden">
+            <div class="overlay-content">
+                <h2 id="win-message">X Wins!</h2>
+                <div class="win-stats">
+                    <p id="win-combination">Sum: 8 + 1 + 6 = 15</p>
+                </div>
+                <button id="play-again" class="btn primary">Play Again</button>
+            </div>
+        </div>
+
+        <footer id="developer-credit">
+            <p>Developed by <a href="https://www.facebook.com/share/1AJkxqaNnR/" target="_blank">Mohsin Eli</a></p>
+        </footer>
+    </div>
+
+    <!-- MVC Implementation -->
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
